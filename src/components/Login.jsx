@@ -1,23 +1,31 @@
 import React, { useState } from 'react'
-import styles from '../styles/login.module.css'
-import { auth } from '../firebase'
+// import styles from '../styles/login.module.css'
 import { useAuth } from '../context/AuthContext'
-
+import { Link } from 'react-router-dom'
+import Signup from './SignUp'
 export default function Login() {
   
-  const {currentUser, setCurrentUser, signUp, logOut} = useAuth()
+  const {currentUser, setCurrentUser, signUp, logOut, logIn} = useAuth()
   const [username, setUserName] = useState()
   const [password, setPassword] = useState()
   //register user with firebase
 
-  //logout user
-  // async function handleLogOut(){
-  //   await logOut().then((success)=>{
-  //     console.log(success);
-  //   }).catch((error) => {
-  //     console.log(error); 
-  //   })
-  // }
+  // login the user
+  async function handleLogin(username, password){
+    await logIn(username, password).then((result)=>{
+      console.log(result)
+    }).catch((error)=> {
+      console.log(error)
+    })  
+  }
+
+  async function handleLogOut(){
+    await logOut().then((result)=>{
+      console.log(result)
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
 
   console.log(`Current User ${currentUser}`);
   return (
@@ -38,9 +46,10 @@ export default function Login() {
                 }}/>
 
                 <button onClick={()=>{
-                  handleRegister(username, password)
+                  handleLogin(username, password)
                 }}>Log in     </button>
-                <p className={styles.signIn}>New User? <a href='#'>Sign up</a></p>
+                <p className={styles.signIn}>New User? <Link to='/signup'>Sign up</Link></p>
+                <button onClick={handleLogOut}>Log Out</button>
 
             </div>
       </div>

@@ -6,8 +6,6 @@ import App from './components/App'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <AuthProvider>
     <App />
-  </AuthProvider>
   </StrictMode>,
 )

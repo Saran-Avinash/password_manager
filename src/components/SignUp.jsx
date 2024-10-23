@@ -3,6 +3,8 @@ import styles from '../styles/signup.module.css'
 import { auth } from '../firebase'
 import { useAuth } from '../context/AuthContext'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Login from './Login'
 export default function Signup() {
 
  const[password, setPassword] = useState();
@@ -34,8 +36,8 @@ export default function Signup() {
 
                 <button onClick={()=>{
                   handleRegister(userName, password)
-                }}>Log in     </button>
-                <p className={styles.signIn}>New User? <a href='#'>Sign up</a></p>
+                }}>Sign up    </button>
+                <p className={styles.signIn}>Already have an account?<Link to='/login' >Log in</Link></p>
 
             </div>
       </div>
