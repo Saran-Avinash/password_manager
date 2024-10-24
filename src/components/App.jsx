@@ -14,10 +14,11 @@ function App() {
         <Route path='/login' Component={Login}/>
         <Route path='/signup' Component={Signup}/>
         <Route path='/dashboard/user/:uid' Component={Dashboard}/>
+        <Route path='/dashboard/user/:uid/password_generator' Component={PasswordGenerator}/>
       </Routes>
 
       </AuthProvider>
-      <PasswordGenerator/>
+     
     </BrowserRouter>
   )
 }

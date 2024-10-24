@@ -5,7 +5,11 @@ export default {
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+       'custom' : '50rem',
+      },
+    },
   },
   plugins: [],
 }

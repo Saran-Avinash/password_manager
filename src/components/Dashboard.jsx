@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
+import Hero from './Hero'
+import Passwords from './Passwords'
 function Dashboard() {
 
   const {currentUser,
@@ -17,13 +19,13 @@ function Dashboard() {
         }
     },[currentUser])
 
-    async function handleLogOut(){
-      await logOut();
-    }
+   
    
   return (
    <> 
     <Navbar/>   
+    <Hero/>
+    <Passwords/>
    </>
   )
 }
