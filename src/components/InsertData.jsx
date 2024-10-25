@@ -92,7 +92,7 @@ setUrl} = useAuth()
         title={title}
         close={()=> setStatus(false)}
     /> */}
-    <div className='absolute flex flex-col border-red-200 w-3/4 h-5/6 p-6 inset-0 m-auto bg-slate-50 z-50 shadow-2xl rounded-2xl'>
+    <div className='absolute flex flex-col border-red-200 w-3/4 h-fit p-6 inset-0 m-auto bg-slate-50 z-50 shadow-2xl rounded-2xl'>
     {status && <div id="alert" className='absolute inset-0 mx-auto w-fit h-fit bg-green-600 -translate-y-72 transition-all ease-in duration-200 p-2 text-lg text-white rounded-xl'>Saved Successfully</div>}
             <button className='ml-auto text-red-600 text-2xl' onClick={handleIsAddPassword}>X</button>
             <h1 className='text-3xl text-center after:content-["🔒"]  border-gray-400 pb-5'>Safeguard your password</h1>
