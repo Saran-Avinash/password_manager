@@ -56,7 +56,7 @@ export default function Login() {
 
       {/* image */}
       <div className={styles.loginImage}>
-        Image
+        <img src="/rb_16052.png" alt="" />
       </div>
     </div>
   )

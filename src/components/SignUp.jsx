@@ -44,7 +44,7 @@ export default function Signup() {
 
       {/* image */}
       <div className={styles.loginImage}>
-        Image
+        <img src="/rb_82084.png" alt="" />
       </div>
     </div>
    </div>

@@ -11,6 +11,9 @@ export default function InsertData({isAddPassword, setIsAddPassword}) {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [status, setStatus] = useState(true);
+    const [type, setType] = useState("success")
+    const [title, setTitle] = useState("")
 
     const { currentUser,
         setCurrentUser,
@@ -66,6 +69,15 @@ setUrl} = useAuth()
         console.log(data)
         await addDoc(collectionRef, data).then((docRef)=> {
             console.log(`Successfully saved at ${docRef.id}`)
+            const alert = document.getElementById("alert")
+            alert.classList.toggle('translate-y-0')
+            alert.classList.toggle('-translate-y-72')
+            setTimeout(()=>{
+                alert.classList.toggle('translate-y-0')
+                alert.classList.toggle('-translate-y-72')
+                
+            }, 3000)
+            
         }).catch(()=>{
             console.log("Error saving data")
         })
@@ -74,7 +86,14 @@ setUrl} = useAuth()
 
   return (
     <>
+    {/* <ReactJsAlert
+        status={status}
+        type={type}
+        title={title}
+        close={()=> setStatus(false)}
+    /> */}
     <div className='absolute flex flex-col border-red-200 w-3/4 h-5/6 p-6 inset-0 m-auto bg-slate-50 z-50 shadow-2xl rounded-2xl'>
+    {status && <div id="alert" className='absolute inset-0 mx-auto w-fit h-fit bg-green-600 -translate-y-72 transition-all ease-in duration-200 p-2 text-lg text-white rounded-xl'>Saved Successfully</div>}
             <button className='ml-auto text-red-600 text-2xl' onClick={handleIsAddPassword}>X</button>
             <h1 className='text-3xl text-center after:content-["🔒"]  border-gray-400 pb-5'>Safeguard your password</h1>
 
@@ -128,6 +147,7 @@ setUrl} = useAuth()
                     <button className='text-2xl w-1/3 h-12 bg-green-600 hover:rounded-full hover:bg-green-500' onClick={saveDataInFireBase}>Save</button>
                 </div>
             </div>
+           
     </div>
     </>
   )
