@@ -15,7 +15,7 @@ export function useAuth() {
 
 export function AuthProvider({children}){
     const navigate = useNavigate()
-
+    const [url, setUrl] = useState('')
     const [currentUser, setCurrentUser] = useState('')   // handles current user state
 
     async function signUp(username, password){  // username is email  hangles signup method and returns a promise
@@ -82,7 +82,9 @@ export function AuthProvider({children}){
         setCurrentUser,
         signUp,
         logOut,
-        logIn
+        logIn,
+        url,
+        setUrl
     }
 
 

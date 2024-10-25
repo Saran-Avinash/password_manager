@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
+import InsertData from './InsertData'
+
 
 export default function Hero() {
+
+    const [isAddPassword, setIsAddPassword] = useState(false)
+    function handleAddPassword(){
+        setIsAddPassword(!isAddPassword)
+    }
+
   return (
     <>
+    {isAddPassword && <InsertData isAddPassword={isAddPassword} setIsAddPassword={setIsAddPassword}/>}
     <div className='flex flex-col max-w-custom mx-auto  items-start h-1/3 bg-white py-6 gap-5 '>
         
         <h1 className='text-2xl fixed left-100  box-border'>Password Manager</h1>
@@ -15,7 +24,7 @@ export default function Hero() {
             <div className='flex flex-col w-full h-full justify-evenly basis-1/2'>
                 <h1 className='text-2xl'>Add Password</h1>
                 <p>Click here to Save Passwords</p>
-            <button className="w-3/4 relative h-auto p-3 rounded-full border-2 before:content-['+'] before:absolute before:left-2 text-xl hover:shadow-lg">Add New Password</button>
+            <button onClick={handleAddPassword} className="w-56 relative h-auto p-3 rounded-md border-2 after:content-['+'] after:absolute after:right-3 text-xl hover:shadow-lg text-white bg-green-500 hover:bg-green-400">Add New Password</button>
             </div>
             <div>
                 <img src="/icons8-show-password-96.png" alt="" />
