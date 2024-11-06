@@ -1,61 +1,69 @@
-
-*{
-    box-sizing: border-box;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-body{
-    margin: 0;
-}
+/* signup.module.css */
 
 .container {
-    display: flex;
-    width: 100vw;
+    position: relative;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;  
-    padding: 1rem 3rem;
-}
-
-.signupDetails {
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .signupContent {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.85); /* Slight transparency */
+    border-radius: 8px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    /* justify-content: ; */
-    flex-basis: 50%;
-    background-color: azure;
-    padding: 3rem;
-
-}
-
-.loginImage {
-    
-    flex-basis: 50%;
-}
-
-.dynamicText{
-    font-size: 3rem;
-    margin: 0;
-}   
-
-.formContainer{
+  }
+  
+  .signupDetails {
+    text-align: center;
+  }
+  
+  .dynamicText {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .formContainer {
     display: flex;
     flex-direction: column;
-    width: 100%;    
     gap: 1rem;
-}
-
-.formContainer label {
-    font-size: 2rem;;
-}
-.formContainer .signIn {
-    align-self: center;
-}
-@keyframes typing {
-    100%{
-        left: 100%;
-    }
-}
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 0.8rem;
+    font-size: 1rem;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  .signIn {
+    margin-top: 1rem;
+    color: #007bff;
+  }
+  

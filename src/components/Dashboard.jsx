@@ -15,9 +15,11 @@ function Dashboard() {
     const navigate = useNavigate()
     useEffect(()=>{
         if(currentUser == null){
+          
             navigate('/login')
         }
     },[currentUser])
+    
 
    
    

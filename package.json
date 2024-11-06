@@ -16,7 +16,8 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "reactjs-alert": "^2.2.0",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
