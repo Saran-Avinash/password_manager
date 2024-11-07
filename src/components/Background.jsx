@@ -33,7 +33,7 @@ export default function Background() {
       positions[i * 3] = (Math.random() - 0.5) * 20;
       positions[i * 3 + 1] = Math.random() * 20;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      velocities[i] = 0.012 + Math.random() * 0.05;
+      velocities[i] = 0.006 + Math.random() * 0.05;
     }
 
     const particles = new THREE.BufferGeometry();
