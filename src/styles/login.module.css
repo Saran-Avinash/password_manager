@@ -37,7 +37,7 @@ body{
     transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
 
     background: linear-gradient(to bottom, lightblue, black); /* Corrected the background gradient */
-    color: white; /* Changes text color to white on hover */
+    color: black; /* Changes text color to white on hover */
     transform: translateY(-10px); /* Moves the element up when hovered */
 }
 

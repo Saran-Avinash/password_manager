@@ -55,13 +55,13 @@ setUrl} = useAuth()
     //   }
       
     async function saveDataInFireBase(){
-        console.log(currentUser)
-    
-        
 
+        const docRef = doc(db, "users", currentUser, "websites", url);
+        await setDoc(docRef, {
+            "url" : url
+        })
         const collectionRef = collection(db, "users", currentUser.toString(), "websites", url, "accounts") 
         const data = {
-            websiteUrl : url,
             userName : userName,
             password : password,
             

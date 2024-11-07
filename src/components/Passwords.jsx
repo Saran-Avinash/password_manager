@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase'
-import { getDoc, doc, collection, getDocs } from 'firebase/firestore'
+import { getDoc, doc, collection, getDocs, query } from 'firebase/firestore'
 import { useAuth } from '../context/AuthContext'
-
+import { CIcon } from '@coreui/icons-react';
+import * as icon from '@coreui/icons';
 export default function Passwords() {
 
-    const [websiteData, setWebsiteData] = useState([])
     const [allData, setAllData] = useState([])
     const {   currentUser,
         setCurrentUser,
@@ -13,9 +13,13 @@ export default function Passwords() {
         logOut,
         logIn,
         url,
-        setUrl} = useAuth()
-        console.log(websiteData)
+        setUrl,
+        setWebsites,
+        websites,
+        fetchData} = useAuth()
+        console.log(websites)
         
+       
     //     const passwordData = {}
     //     async function getAccountsData(){
     //         for(const website of websiteData){
@@ -46,27 +50,9 @@ export default function Passwords() {
     //     setWebsiteData([...new Set([...data])])
     //     // getAccountsData()
     // }
-        // useEffect(()=> {
-
-        //  const fetchData = async ()  => {
-        //     console.log(currentUser)
-
-        //      const docRef = doc(db, "users", currentUser)
-        //      try{
-        //          const docSnap = await getDoc(docRef)
- 
-        //      if(docSnap.exists()){
-        //          console.log(docSnap.data())
-        //      }else{
-        //          console.log("No document available")
-        //      }
-        //     }
-        //     catch(error){
-        //         console.log(error)
-        //     }
-        //  }   
-        //  fetchData()
-        // },[])
+      useEffect(()=>{          
+          fetchData()         
+      }, [currentUser])   
    
 
   return (
@@ -78,6 +64,9 @@ export default function Passwords() {
            </div>
            <div>
                 {/* <button onClick={fetchData}> Get Data</button> */}
+                {websites && <div>
+    
+                  </div>}
            </div>
         </div> 
     </>

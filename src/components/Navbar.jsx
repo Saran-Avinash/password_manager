@@ -29,16 +29,15 @@ export default function Navbar() {
       })
     }
   return (
-    <div className='flex flex-row w-full font-sans bg-gray-100'>
-       <span className='text-xl basis-1/2 p-5'>Hi You</span>
+    <div className='flex flex-row w-full font-sans bg-gray-100 justify-end'>
        <div className='flex p-5 gap-x-10 relative justify-end basis-1/2'>
-         <span className='text-xl'><button>Dashboard</button></span>
-         <span className='text-xl '><button onClick={()=>{ 
+         <span className='text-xl '><button className='hover:bg-gray-200'>Dashboard</button></span>
+         <span className='text-xl '><button className='hover:bg-gray-200' onClick={()=>{ 
           navigate(`/dashboard/user/${currentUser}/password_generator`)}}>Generate Password</button></span>
 
          <button 
           onClick={collapsibleContent}
-         className='text-2xl'>
+         className='text-2xl hover:bg-gray-200  '>
             <img src="/person_13924070.png" className='w-6 h-6 ' alt="" />
 
          </button>
@@ -46,14 +45,14 @@ export default function Navbar() {
          <div id="collapsibleContent"  className={`absolute  flex flex-col justify-start gap-3 items-start rounded-lg shadow-lg w-1/2 h-64 top-14  bg-white overflow-hidden max-h-0 transition-all duration-75 ease-out z-50`}>
             <div className='w-14 h-14 flex justify-center  items-center rounded-full bg-gray-200'>
             </div>
-            <div className='w-full  hover:bg-gray-200  h-auto border-b-2 px-2 py-2 transition-all ease-in-out duration-500'>
+            {/* <div className='w-full  hover:bg-gray-200  h-auto border-b-2 px-2 py-2 transition-all ease-in-out duration-500'>
                <button className='text-lg'>My profile</button>
-            </div>
+            </div> */}
             <div className='w-full  hover:bg-gray-200  h-auto border-b-2 px-2 py-2 transition-all ease-in-out duration-500'>
-               <button className='text-lg' onClick={handleLogOut}>Logout</button>
+               <button className='text-lg hover:bg-gray-200' onClick={handleLogOut}>Logout</button>
             </div>
             <div className='w-full  hover:bg-gray-200  h-auto px-2 py-2 transition-all ease-in-out duration-500'>
-               <button className='text-lg' onClick={handleLogOut}>Help</button>
+               <button className='text-lg hover:bg-gray-200' onClick={handleLogOut}>Help</button>
             </div>
             
             

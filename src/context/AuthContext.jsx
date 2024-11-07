@@ -3,7 +3,7 @@ import { createContext } from 'react'
 import {auth, db} from '../firebase'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
 import { signOut } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+import { doc, setDoc, query, collection, getDocs } from 'firebase/firestore'
 import {useNavigate   } from 'react-router-dom'
 
 
@@ -15,8 +15,21 @@ export function useAuth() {
 
 export function AuthProvider({children}){
     const navigate = useNavigate()
+    const [websites, setWebsites] = useState([]);
     const [url, setUrl] = useState('')
     const [currentUser, setCurrentUser] = useState('')   // handles current user state
+
+    const fetchData = async ()=> {
+        try{
+         const docs = query(collection(db, "users", currentUser, "websites"))
+          const querySnapShot = await getDocs(docs)
+          setWebsites(querySnapShot.docs.map((doc)=> doc.id))
+        }
+        catch(error){
+          console.log(`error querying data from firestore for user ${currentUser} : ${error}`)
+        }
+        
+      }
 
     async function signUp(username, password){  // username is email  hangles signup method and returns a promise
         return new Promise(async (resolve, reject) => {
@@ -84,7 +97,10 @@ export function AuthProvider({children}){
         logOut,
         logIn,
         url,
-        setUrl
+        setUrl,
+        setWebsites,
+        websites,
+        fetchData
     }
 
 
