@@ -60,14 +60,15 @@ setUrl} = useAuth()
         await setDoc(docRef, {
             "url" : url
         })
-        const collectionRef = collection(db, "users", currentUser.toString(), "websites", url, "accounts") 
+        const docRef2 = doc(db, "users", currentUser.toString(), "websites", url, "accounts", userName) 
         const data = {
             userName : userName,
             password : password,
             
         }
         console.log(data)
-        await addDoc(collectionRef, data).then((docRef)=> {
+        try{
+            const  result = await setDoc(docRef2, data)
             console.log(`Successfully saved at ${docRef.id}`)
             const alert = document.getElementById("alert")
             alert.classList.toggle('translate-y-0')
@@ -77,10 +78,24 @@ setUrl} = useAuth()
                 alert.classList.toggle('-translate-y-72')
                 
             }, 3000)
+        }
+        catch(error){
+            console.log("error adding data to database")
+        }
+        // await addDoc(collectionRef, data).then((docRef)=> {
+        //     console.log(`Successfully saved at ${docRef.id}`)
+        //     const alert = document.getElementById("alert")
+        //     alert.classList.toggle('translate-y-0')
+        //     alert.classList.toggle('-translate-y-72')
+        //     setTimeout(()=>{
+        //         alert.classList.toggle('translate-y-0')
+        //         alert.classList.toggle('-translate-y-72')
+                
+        //     }, 3000)
             
-        }).catch(()=>{
-            console.log("Error saving data")
-        })
+        // }).catch(()=>{
+        //     console.log("Error saving data")
+        // })
     }
   
 

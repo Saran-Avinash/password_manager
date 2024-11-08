@@ -14,7 +14,7 @@ export default function Hero() {
     {isAddPassword && <InsertData isAddPassword={isAddPassword} setIsAddPassword={setIsAddPassword}/>}
     <div className='flex flex-col max-w-custom mx-auto  items-start h-1/3 bg-white py-6 gap-5 '>
         
-        <h1 className='text-2xl fixed left-100  box-border'>Password Manager</h1>
+        <h1 className='text-2xl left-100  box-border z-50 bg'>Password Manager</h1>
         
         <div>
             <p className='text-zinc-400 mt-11'>See, save and edit your passwords</p>
