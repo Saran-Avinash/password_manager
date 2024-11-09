@@ -9,7 +9,14 @@ export default function Navbar() {
       setCurrentUser,
       signUp,
       logOut,
-      logIn} = useAuth()
+      logIn ,
+      url,
+      setUrl,
+      setWebsites,
+      websites,
+      fetchData,
+    accounts,
+  setAccounts} = useAuth()
     function toggleCollapse(){
         setIsOpen(!isOpen);
     }
@@ -22,6 +29,8 @@ export default function Navbar() {
     }
 
     async function handleLogOut(){
+      setWebsites([]);
+      setAccounts({});
       await logOut().then((result)=>{
         console.log(result)
       }).catch((error)=>{

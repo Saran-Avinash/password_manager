@@ -8,8 +8,8 @@ export default function Passwords() {
 
     const [allData, setAllData] = useState([])
     const [selectedWebsite, setSelectedWebsite] = useState(null); // Track selected website to show/hide accounts
-    const [accounts, setAccounts] = useState({})
     const [refresh, setRefresh] = useState(false)
+    const [error, setError] = useState(false)
     let count = 0
     const {   currentUser,
         setCurrentUser,
@@ -20,7 +20,9 @@ export default function Passwords() {
         setUrl,
         setWebsites,
         websites,
-        fetchData} = useAuth()
+        fetchData,
+    accounts,
+setAccounts} = useAuth()
         console.log(websites)
         
         useEffect(()=>{  
@@ -46,11 +48,13 @@ export default function Passwords() {
                       })
                   );
                   console.log("Accounts data fetched:", accountsData);
+                  setError(false);
                   setRefresh(false)
                   setAccounts(accountsData); // Update state after data fetching
               };
               fetchAccounts();
           } else {
+            setError(true);
               console.log("No websites data to fetch accounts for.");
           }
       }, [websites, refresh]); // Trigger re-fetch when `websites` or `currentUser` changes
@@ -97,7 +101,7 @@ export default function Passwords() {
     <>
         <div className='flex flex-col max-w-custom mx-auto border-2 gap-7 rounded-2xl px-10 py-6'>
            <div className='flex w-full  justify-between border-b-2 pb-6'>
-            { Object.keys(accounts).length > 0 ? (<h1 className=' text-2xl '>{Object.values(accounts).reduce((acc, accList)=> acc + accList.length, 0)} Passwords</h1>)
+            { accounts && Object.keys(accounts).length > 0 ? (<h1 className=' text-2xl '>{Object.values(accounts).reduce((acc, accList)=> acc + accList.length, 0)} Passwords</h1>)
             :
             (<h1 className=' text-2xl '>Calculating passwords....</h1>)}
               <button className='hover:bg-slate-100' onClick={()=>{
@@ -105,7 +109,7 @@ export default function Passwords() {
               }}>Refersh</button>
            </div>
            <div>
-           {Object.keys(accounts).length > 0 && refresh == false ? (
+           {accounts &&  Object.keys(accounts).length > 0 && refresh == false && error == false ? (
                     Object.entries(accounts).map(([website, accountList]) => (
                         <div key={website}>
                             <div
@@ -129,8 +133,10 @@ export default function Passwords() {
                             )}
                         </div>
                     ))
-                ) : (
-                    <p className='text-center'>Fetching data from database...</p>
+                ) : (  
+                    error == true ? (<p className='text-center'>No accounts to fetch data from...</p>):
+                        (<p>Fetching data from database</p>)
+                    
                 )}
            </div>
         </div> 

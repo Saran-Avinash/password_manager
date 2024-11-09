@@ -15,6 +15,7 @@ export function useAuth() {
 
 export function AuthProvider({children}){
     const navigate = useNavigate()
+    const [accounts, setAccounts] = useState({})
     const [websites, setWebsites] = useState([]);
     const [url, setUrl] = useState('')
     const [currentUser, setCurrentUser] = useState('')   // handles current user state
@@ -100,7 +101,9 @@ export function AuthProvider({children}){
         setUrl,
         setWebsites,
         websites,
-        fetchData
+        fetchData,
+        accounts,
+        setAccounts
     }
 
 
