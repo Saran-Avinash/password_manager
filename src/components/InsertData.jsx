@@ -139,17 +139,17 @@ setUrl} = useAuth()
                         <label htmlFor="" className='text-slate-500 text-2xl'>Password</label>
                         <input type="password" id="password" onChange={(e)=>{
                             setPassword(e.target.value)
-                        }} className=' w-full focus:outline-none text-2xl bg-slate-50'/>
-                        <button className='absolute right-0' onClick={switchPassword}>👁️</button>
+                        }} className=' w-full focus:outline-none text-2xl bg-slate-50 relative'/>
+                        <button className='absolute top-1/2 right-10' onClick={switchPassword}>👁️</button>
 
-                    </div>
-                    <div className='w-full relative border-2 p-3 rounded-lg'>
+                    </div> 
+                    {/* <div className='w-full relative border-2 p-3 rounded-lg'>
                         <label htmlFor="" className='text-slate-500 text-2xl'>Confirm Password</label>
                         <input type="password" id="confirmPassword" onChange={(e)=>{
                             setConfirmPassword(e.target.value)
                         }} className='relative w-full focus:outline-none text-2xl bg-slate-50'/>
                         <button className='absolute right-0' onClick={switchComfirmPassword}>👁️</button>
-                    </div>
+                    </div> */}
                     {/* <div className='w-3/4'>
                         <label htmlFor="">Password</label>
                         <input type="text" className='border-2 w-full'/>
