@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const PasswordGenerator = () => {
+const PasswordGenerator = ({}) => {
+  const navigate = useNavigate()
+  const {  currentUser,
+    setCurrentUser,
+    signUp,
+    logOut,
+    logIn,
+    url,
+    setUrl,
+    setWebsites,
+    websites,
+    fetchData} = useAuth()
   const [password, setPassword] = useState('');
   const [purpose, setPurpose] = useState('');
   const [length, setLength] = useState(10);
@@ -16,7 +29,11 @@ const PasswordGenerator = () => {
   const numbers = '0123456789';
   const symbols = '!@#$%^&*()_+{}:"<>?[];,./';
 
-
+  useEffect(()=>{
+    if(currentUser == null){
+      navigate('/login')
+    }
+  }, [currentUser])
   const generatePassword = () => {
     let charPool = '';
     if (includeLowercase) charPool += lowercaseLetters;
@@ -122,7 +139,7 @@ const PasswordGenerator = () => {
                 onChange={(e) => setIncludeSymbols(e.target.checked)}
                 className="form-checkbox text-indigo-600"
               />
-              <span className="ml-2 text-gray-700">Need Symbols</span>
+              <span className="ml-2 text-gray-700">Need Symbols</span>r
             </label>
           </div>
 

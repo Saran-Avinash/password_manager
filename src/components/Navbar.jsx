@@ -31,7 +31,9 @@ export default function Navbar() {
   return (
     <div className='flex flex-row w-full font-sans bg-gray-100 justify-end'>
        <div className='flex p-5 gap-x-10 relative justify-end basis-1/2'>
-         <span className='text-xl '><button className='hover:bg-gray-200'>Dashboard</button></span>
+         <span className='text-xl '><button className='hover:bg-gray-200' onClick={()=>{
+          navigate(`/dashboard/user/${currentUser}`)
+         }}>Dashboard</button></span>
          <span className='text-xl '><button className='hover:bg-gray-200' onClick={()=>{ 
           navigate(`/dashboard/user/${currentUser}/password_generator`)}}>Generate Password</button></span>
 
