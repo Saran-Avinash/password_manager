@@ -134,8 +134,8 @@ setAccounts} = useAuth()
                         </div>
                     ))
                 ) : (  
-                    error == true ? (<p className='text-center'>No accounts to fetch data from...</p>):
-                        (<p>Fetching data from database</p>)
+                    error == true ? (<p className='text-center text-red-600'>No accounts to fetch data from...</p>):
+                        (<p className='text-center text-green-600'>Fetching data from database</p>)
                     
                 )}
            </div>
